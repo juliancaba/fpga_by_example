@@ -1,15 +1,28 @@
+source TCL/fileGroup.tcl
+package require fileGroup 1.0
+
+source TCL/rmGroup.tcl
+package require rmGroup 1.0
+
+source TCL/cfgGroup.tcl
+package require cfgGroup 1.0
+
+
 ###############################################################
 ### Define Part, Package, Speedgrade 
 ###############################################################
 set originDir [file dirname [info script]]
 set part xczu7ev-ffvc1156-2-e
 set board_part "xilinx.com:zcu104:part0:1.1" 
-set xdcFile "blink_intr.xdc"
+#set xdcFile "blink_intr.xdc"
 if {[lindex $argv 0] == "2018.3"} {
-    set blockDesign src/bd/bd_blink_intr_2018.3.tcl
+    set toolchainVer [lindex $argv 0]
 } else {
-    error "[ERROR] No block design for the request toolchain version"
+    set toolchainVer 2018.3
+    puts "No block design for the request toolchain version"
+    puts "Default 2018.3"
 }
+set blockDesign src/bd/bd_blink_intr_$toolchainVer.tcl
 ###############################################################
 
 
@@ -24,49 +37,23 @@ if {[lindex $argv 0] == "2018.3"} {
 
 set designName "design_1"
 set prjName tmp
-#set userIPDir ip_repo
+set synthPrj [lindex $argv 1]
+set userIPDir ip_repo
+set staticFiles [fileGroup::create]
+
+# fileGroup::add $staticFiles src/top/ top.vhd "TRUE"
+
+set constraintFiles [fileGroup::create]
+fileGroup::add $constraintFiles src/xdc/ blink_intr.xdc
 ###############################################################
 
 
 
-
 ###############################################################
-### Create project
+### Configurations
 ###############################################################
-#create_project $prjName $originDir/$prjName -part $part
-create_project -force $prjName ./$prjName -part $part
-
-# Set the directory path for the new project
-set prjDir [get_property directory [current_project]]
-
-# Set project properties
-set obj [get_projects $prjName]
-set_property "board_part" $board_part [current_project]
-set_property "default_lib" "xil_defaultlib" [current_project]
-set_property "simulator_language" "Mixed" [current_project]
-set_property "target_language" "VHDL" [current_project]
-
-# Updte IP Cores
-#set_property ip_repo_paths $userIPDir [current_project]
-#update_ip_catalog -rebuild
-
-
-# Create block design
-source $originDir/$blockDesign
-
-# Add Constraints
-add_files -fileset constrs_1 -norecurse src/xdc/$xdcFile
-import_files -fileset constrs_1 src/xdc/$xdcFile
-
-# Create top
-make_wrapper -files [get_files $prjDir/$prjName.srcs/sources_1/bd/$designName/$designName.bd] -top
-import_files -norecurse $prjDir/$prjName.srcs/sources_1/bd/$designName/hdl/$designName\_wrapper.vhd
-
-puts "INFO: Project created"
-
-close_project
-
-puts "INFO: Project closed"
+set compressReference off
+set createBlanking off
 ###############################################################
 
 
