@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xilinx:parameterAbstractionDefinition xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>arco_group</spirit:vendor>
+  <spirit:library>arco_interface</spirit:library>
+  <spirit:name>mdrv.param</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <xilinx:scope>
+    <xilinx:custom>IP Integrator</xilinx:custom>
+  </xilinx:scope>
+  <xilinx:parameterAbstraction xilinx:logicalName="AMRD_WIDTH" xilinx:default="32" spirit:format="long" spirit:resolve="user" spirit:minimum="32" spirit:maximum="32" spirit:rangeType="long" xilinx:description="Memory Controller Width (bits)" xilinx:propagationSource="strength" xilinx:propagationConflictSeverity="error"/>
+</xilinx:parameterAbstractionDefinition>

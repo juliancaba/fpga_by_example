@@ -1,0 +1,286 @@
+
+
+================================================================
+== Vivado HLS Report for 'Block_proc11'
+================================================================
+* Date:           Mon Nov 11 13:37:59 2019
+
+* Version:        2017.4 (Build 2086221 on Fri Dec 15 21:13:33 MST 2017)
+* Project:        prj.hlsObj
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      7.44|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |    2|    2|         1|          -|          -|     2|    no    |
+        |- Loop 2  |    ?|    ?|         1|          -|          -|     ?|    no    |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 10
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	4  / (!tmp)
+	5  / (tmp & !tmp_1 & !tmp_4)
+	6  / (tmp & !tmp_1 & tmp_4)
+	9  / (tmp & tmp_1)
+4 --> 
+	8  / true
+5 --> 
+	8  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	8  / (tmp & !tmp_1 & tmp_4 & tmp_14)
+9 --> 
+	10  / (tmp_5)
+	9  / (!tmp_5)
+10 --> 
+	8  / true
+
+* FSM state operations: 
+
+ <State 1> : 0.00ns
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%words32 = alloca [2 x i32], align 4" [./wrapperAdmin.cc:89->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_1 : Operation 12 [2/2] (0.00ns)   --->   "call fastcc void @getRequestHead(i32* %din_V)" [./wrapperAdmin.cc:126]   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+ <State 2> : 0.00ns
+ST_2 : Operation 13 [1/2] (0.00ns)   --->   "call fastcc void @getRequestHead(i32* %din_V)" [./wrapperAdmin.cc:126]   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+ <State 3> : 3.63ns
+ST_3 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %din_V, [8 x i8]* @p_str2, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str)"
+ST_3 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %dout_V, [8 x i8]* @p_str2, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str)"
+ST_3 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %pr_V_areaID, [8 x i8]* @p_str2, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str)"
+ST_3 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %pr_V_addr, [8 x i8]* @p_str2, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str)"
+ST_3 : Operation 18 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i1* %prDone_V, [8 x i8]* @p_str2, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str)"
+ST_3 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* @bufferRESP_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"
+ST_3 : Operation 20 [1/1] (0.00ns)   --->   "%header_objectID_load = load i8* @header_objectID, align 1" [./wrapperAdmin.cc:128]
+ST_3 : Operation 21 [1/1] (1.55ns)   --->   "%tmp = icmp eq i8 %header_objectID_load, 2" [./wrapperAdmin.cc:128]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 22 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecChannel([13 x i8]* @bufferRESP_OC_V_str, i32 1, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 16, i32 16, i32* @bufferRESP_V, i32* @bufferRESP_V)"
+ST_3 : Operation 23 [1/1] (0.00ns)   --->   "br i1 %tmp, label %0, label %1" [./wrapperAdmin.cc:128]
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "%header_size_load = load i16* @header_size, align 2" [./wrapperAdmin.cc:148]
+ST_3 : Operation 25 [2/2] (1.76ns)   --->   "call fastcc void @forward(i32* %din_V, i16 signext %header_size_load)" [./wrapperAdmin.cc:148]   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_3 : Operation 26 [1/1] (0.00ns)   --->   "%header_methodID_load = load i8* @header_methodID, align 1" [./wrapperAdmin.cc:129]
+ST_3 : Operation 27 [1/1] (1.55ns)   --->   "%tmp_1 = icmp eq i8 %header_methodID_load, 1" [./wrapperAdmin.cc:129]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 28 [1/1] (0.00ns)   --->   "br i1 %tmp_1, label %2, label %3" [./wrapperAdmin.cc:129]
+ST_3 : Operation 29 [1/1] (1.55ns)   --->   "%tmp_4 = icmp eq i8 %header_methodID_load, 2" [./wrapperAdmin.cc:135]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 30 [1/1] (0.00ns)   --->   "br i1 %tmp_4, label %5, label %6" [./wrapperAdmin.cc:135]
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%header_size_load_1 = load i16* @header_size, align 2" [./wrapperAdmin.cc:141]
+ST_3 : Operation 32 [2/2] (1.76ns)   --->   "call fastcc void @forward(i32* %din_V, i16 signext %header_size_load_1)" [./wrapperAdmin.cc:141]   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_3 : Operation 33 [1/1] (3.63ns)   --->   "%prDone_V_read = call { i1, i1 } @_ssdm_op_NbRead.ap_fifo.volatile.i1P(i1* %prDone_V)" [./wrapperAdmin.cc:111->./wrapperAdmin.cc:136]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_3 : Operation 34 [1/1] (0.00ns)   --->   "%tmp_16 = extractvalue { i1, i1 } %prDone_V_read, 1" [./wrapperAdmin.cc:111->./wrapperAdmin.cc:136]
+ST_3 : Operation 35 [1/1] (0.00ns)   --->   "br i1 %tmp_16, label %8, label %wrapper_status.exit" [./wrapperAdmin.cc:112->./wrapperAdmin.cc:136]
+ST_3 : Operation 36 [1/1] (1.76ns)   --->   "store i4 1, i4* @p_status, align 1" [./wrapperAdmin.cc:113->./wrapperAdmin.cc:136]
+ST_3 : Operation 37 [1/1] (0.00ns)   --->   "br label %wrapper_status.exit" [./wrapperAdmin.cc:113->./wrapperAdmin.cc:136]
+ST_3 : Operation 38 [1/1] (0.00ns)   --->   "%header_cb_load_1 = load i16* @header_cb, align 2" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:130]
+ST_3 : Operation 39 [1/1] (0.00ns)   --->   "%tmp_s = call i32 @_ssdm_op_BitConcatenate.i32.i16.i16(i16 %header_cb_load_1, i16 0)" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:130]
+ST_3 : Operation 40 [1/1] (0.00ns)   --->   "%words32_6 = or i32 %tmp_s, 257" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:130]
+ST_3 : Operation 41 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %dout_V, i32 %words32_6)" [./wrapperAdmin.cc:41->./wrapperAdmin.cc:130]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_3 : Operation 42 [1/1] (1.76ns)   --->   "br label %4" [./wrapperAdmin.cc:91->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]
+
+ <State 4> : 3.63ns
+ST_4 : Operation 43 [1/2] (0.00ns)   --->   "call fastcc void @forward(i32* %din_V, i16 signext %header_size_load)" [./wrapperAdmin.cc:148]   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_4 : Operation 44 [1/1] (0.00ns)   --->   "%header_cb_load = load i16* @header_cb, align 2" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:149]
+ST_4 : Operation 45 [1/1] (0.00ns)   --->   "%header_methodID_load_1 = load i8* @header_methodID, align 1" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:149]
+ST_4 : Operation 46 [1/1] (0.00ns)   --->   "%tmp_6 = call i32 @_ssdm_op_BitConcatenate.i32.i16.i8.i8(i16 %header_cb_load, i8 %header_methodID_load_1, i8 0)" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:149]
+ST_4 : Operation 47 [1/1] (0.00ns)   --->   "%words32_5 = or i32 %tmp_6, 3" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:149]
+ST_4 : Operation 48 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %dout_V, i32 %words32_5)" [./wrapperAdmin.cc:41->./wrapperAdmin.cc:149]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_4 : Operation 49 [1/1] (0.00ns)   --->   "br label %.ret.exitStub"
+
+ <State 5> : 3.63ns
+ST_5 : Operation 50 [1/2] (0.00ns)   --->   "call fastcc void @forward(i32* %din_V, i16 signext %header_size_load_1)" [./wrapperAdmin.cc:141]   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 51 [1/1] (0.00ns)   --->   "%header_cb_load_2 = load i16* @header_cb, align 2" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:142]
+ST_5 : Operation 52 [1/1] (0.00ns)   --->   "%header_methodID_load_2 = load i8* @header_methodID, align 1" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:142]
+ST_5 : Operation 53 [1/1] (0.00ns)   --->   "%tmp_7 = call i32 @_ssdm_op_BitConcatenate.i32.i16.i8.i8(i16 %header_cb_load_2, i8 %header_methodID_load_2, i8 0)" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:142]
+ST_5 : Operation 54 [1/1] (0.00ns)   --->   "%words32_7 = or i32 %tmp_7, 3" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:142]
+ST_5 : Operation 55 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %dout_V, i32 %words32_7)" [./wrapperAdmin.cc:41->./wrapperAdmin.cc:142]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_5 : Operation 56 [1/1] (0.00ns)   --->   "br label %buildResponse.exit"
+
+ <State 6> : 3.80ns
+ST_6 : Operation 57 [1/1] (0.00ns)   --->   "%p_status_load = load i4* @p_status, align 1"
+ST_6 : Operation 58 [1/1] (0.00ns)   --->   "%tmp_11 = zext i4 %p_status_load to i32"
+ST_6 : Operation 59 [1/1] (3.80ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* @bufferRESP_V, i32 %tmp_11)" [./wrapperAdmin.cc:114->./wrapperAdmin.cc:136]   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.80> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 16> <FIFO>
+ST_6 : Operation 60 [1/1] (0.00ns)   --->   "%header_cb_load_3 = load i16* @header_cb, align 2" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:137]
+ST_6 : Operation 61 [1/1] (0.00ns)   --->   "%tmp_12 = call i32 @_ssdm_op_BitConcatenate.i32.i16.i16(i16 %header_cb_load_3, i16 0)" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:137]
+ST_6 : Operation 62 [1/1] (0.00ns)   --->   "%words32_8 = or i32 %tmp_12, 517" [./wrapperAdmin.cc:40->./wrapperAdmin.cc:137]
+ST_6 : Operation 63 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %dout_V, i32 %words32_8)" [./wrapperAdmin.cc:41->./wrapperAdmin.cc:137]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+
+ <State 7> : 3.63ns
+ST_7 : Operation 64 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %dout_V, i32 131073)" [./wrapperAdmin.cc:44->./wrapperAdmin.cc:137]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_7 : Operation 65 [1/1] (0.00ns)   --->   "br label %9" [./wrapperAdmin.cc:45->./wrapperAdmin.cc:137]
+
+ <State 8> : 7.44ns
+ST_8 : Operation 66 [1/1] (0.00ns)   --->   "%tmp_14 = call i1 @_ssdm_op_NbReadReq.ap_fifo.i32P(i32* @bufferRESP_V, i32 1)" [./wrapperAdmin.cc:45->./wrapperAdmin.cc:137]   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.80> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 16> <FIFO>
+ST_8 : Operation 67 [1/1] (0.00ns)   --->   "br i1 %tmp_14, label %10, label %buildResponse.exit.loopexit" [./wrapperAdmin.cc:45->./wrapperAdmin.cc:137]
+ST_8 : Operation 68 [1/1] (3.80ns)   --->   "%tmp_15 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* @bufferRESP_V)" [./wrapperAdmin.cc:46->./wrapperAdmin.cc:137]   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.80> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 16> <FIFO>
+ST_8 : Operation 69 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %dout_V, i32 %tmp_15)" [./wrapperAdmin.cc:46->./wrapperAdmin.cc:137]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_8 : Operation 70 [1/1] (0.00ns)   --->   "br label %9" [./wrapperAdmin.cc:46->./wrapperAdmin.cc:137]
+ST_8 : Operation 71 [1/1] (0.00ns)   --->   "br label %buildResponse.exit"
+ST_8 : Operation 72 [1/1] (0.00ns)   --->   "br label %11"
+ST_8 : Operation 73 [1/1] (0.00ns)   --->   "br label %.ret.exitStub" [./wrapperAdmin.cc:146]
+ST_8 : Operation 74 [1/1] (0.00ns)   --->   "ret void"
+
+ <State 9> : 5.96ns
+ST_9 : Operation 75 [1/1] (0.00ns)   --->   "%it_0_i_i = phi i2 [ 0, %2 ], [ %it, %7 ]"
+ST_9 : Operation 76 [1/1] (0.95ns)   --->   "%tmp_5 = icmp eq i2 %it_0_i_i, -2" [./wrapperAdmin.cc:91->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 77 [1/1] (0.00ns)   --->   "%empty_23 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2, i64 2, i64 2)"
+ST_9 : Operation 78 [1/1] (1.56ns)   --->   "%it = add i2 %it_0_i_i, 1" [./wrapperAdmin.cc:91->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 79 [1/1] (0.00ns)   --->   "br i1 %tmp_5, label %wrapper_newObject.exit, label %7" [./wrapperAdmin.cc:91->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]
+ST_9 : Operation 80 [1/1] (3.63ns)   --->   "%tmp_9 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %din_V)" [./wrapperAdmin.cc:92->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_9 : Operation 81 [1/1] (0.00ns)   --->   "%tmp_10 = zext i2 %it_0_i_i to i64" [./wrapperAdmin.cc:92->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]
+ST_9 : Operation 82 [1/1] (0.00ns)   --->   "%words32_addr_2 = getelementptr inbounds [2 x i32]* %words32, i64 0, i64 %tmp_10" [./wrapperAdmin.cc:92->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]
+ST_9 : Operation 83 [1/1] (2.32ns)   --->   "store i32 %tmp_9, i32* %words32_addr_2, align 4" [./wrapperAdmin.cc:92->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_9 : Operation 84 [1/1] (0.00ns)   --->   "br label %4" [./wrapperAdmin.cc:91->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]
+ST_9 : Operation 85 [1/1] (0.00ns)   --->   "%words32_addr = getelementptr [2 x i32]* %words32, i64 0, i64 0"
+ST_9 : Operation 86 [2/2] (2.32ns)   --->   "%aux = load i32* %words32_addr, align 4" [./wrapperAdmin.cc:95->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_9 : Operation 87 [1/1] (0.00ns)   --->   "%words32_addr_1 = getelementptr inbounds [2 x i32]* %words32, i64 0, i64 1" [./wrapperAdmin.cc:95->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]
+ST_9 : Operation 88 [2/2] (2.32ns)   --->   "%words32_load_1 = load i32* %words32_addr_1, align 4" [./wrapperAdmin.cc:96->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_9 : Operation 89 [1/1] (1.76ns)   --->   "store i4 2, i4* @p_status, align 1" [./wrapperAdmin.cc:82->./wrapperAdmin.cc:132]
+
+ <State 10> : 5.96ns
+ST_10 : Operation 90 [1/2] (2.32ns)   --->   "%aux = load i32* %words32_addr, align 4" [./wrapperAdmin.cc:95->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_10 : Operation 91 [1/2] (2.32ns)   --->   "%words32_load_1 = load i32* %words32_addr_1, align 4" [./wrapperAdmin.cc:96->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_10 : Operation 92 [1/1] (0.00ns)   --->   "%aux_3 = call i16 @_ssdm_op_PartSelect.i16.i32.i32.i32(i32 %words32_load_1, i32 16, i32 31)" [./wrapperAdmin.cc:96->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132]
+ST_10 : Operation 93 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P.i16P(i32* %pr_V_addr, i16* %pr_V_areaID, i32 %aux, i16 %aux_3)" [./wrapperAdmin.cc:68->./wrapperAdmin.cc:81->./wrapperAdmin.cc:132]   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_10 : Operation 94 [1/1] (0.00ns)   --->   "br label %11" [./wrapperAdmin.cc:133]
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 0ns
+The critical path consists of the following:
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+ <State 3>: 3.63ns
+The critical path consists of the following:
+	fifo read on port 'prDone_V' (./wrapperAdmin.cc:111->./wrapperAdmin.cc:136) [50]  (3.63 ns)
+
+ <State 4>: 3.63ns
+The critical path consists of the following:
+	'load' operation ('header_cb_load', ./wrapperAdmin.cc:40->./wrapperAdmin.cc:149) on static variable 'header_cb' [27]  (0 ns)
+	'or' operation ('words32', ./wrapperAdmin.cc:40->./wrapperAdmin.cc:149) [30]  (0 ns)
+	fifo write on port 'dout_V' (./wrapperAdmin.cc:41->./wrapperAdmin.cc:149) [31]  (3.63 ns)
+
+ <State 5>: 3.63ns
+The critical path consists of the following:
+	'load' operation ('header_cb_load_2', ./wrapperAdmin.cc:40->./wrapperAdmin.cc:142) on static variable 'header_cb' [43]  (0 ns)
+	'or' operation ('words32', ./wrapperAdmin.cc:40->./wrapperAdmin.cc:142) [46]  (0 ns)
+	fifo write on port 'dout_V' (./wrapperAdmin.cc:41->./wrapperAdmin.cc:142) [47]  (3.63 ns)
+
+ <State 6>: 3.8ns
+The critical path consists of the following:
+	'load' operation ('p_status_load') on static variable 'p_status' [57]  (0 ns)
+	fifo write on port 'bufferRESP_V' (./wrapperAdmin.cc:114->./wrapperAdmin.cc:136) [59]  (3.8 ns)
+
+ <State 7>: 3.63ns
+The critical path consists of the following:
+	fifo write on port 'dout_V' (./wrapperAdmin.cc:44->./wrapperAdmin.cc:137) [64]  (3.63 ns)
+
+ <State 8>: 7.44ns
+The critical path consists of the following:
+	fifo read on port 'bufferRESP_V' (./wrapperAdmin.cc:46->./wrapperAdmin.cc:137) [70]  (3.8 ns)
+	fifo write on port 'dout_V' (./wrapperAdmin.cc:46->./wrapperAdmin.cc:137) [71]  (3.63 ns)
+
+ <State 9>: 5.96ns
+The critical path consists of the following:
+	fifo read on port 'din_V' (./wrapperAdmin.cc:92->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132) [90]  (3.63 ns)
+	'store' operation (./wrapperAdmin.cc:92->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132) of variable 'tmp', ./wrapperAdmin.cc:92->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132 on array 'words32', ./wrapperAdmin.cc:89->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132 [93]  (2.32 ns)
+
+ <State 10>: 5.96ns
+The critical path consists of the following:
+	'load' operation ('aux', ./wrapperAdmin.cc:95->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132) on array 'words32', ./wrapperAdmin.cc:89->./wrapperAdmin.cc:80->./wrapperAdmin.cc:132 [97]  (2.32 ns)
+	fifo write on port 'pr_V_addr' (./wrapperAdmin.cc:68->./wrapperAdmin.cc:81->./wrapperAdmin.cc:132) [101]  (3.63 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
