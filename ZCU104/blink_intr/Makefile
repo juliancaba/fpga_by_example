@@ -1,34 +1,28 @@
-VERSION=2018.3
+PRJ = blink_intr
+BOARD = zcu104
+SRC_FILES =
+
+TCL_FILE = system.tcl
+
+VIVADO = vivado -mode batch -source
+
+TMP_FILES += *~ *.log *.jou
+PRJ_FILES += *.cache *.hw *.ip_user_files *.srcs *.runs *.sdk *.sim *.xpr    
+
+all: $(PRJ).xpr $(PRJ).sdk/app/Debug/app.elf run
 
 
+$(PRJ).xpr: $(SRC_FILES) clean-all
+	$(VIVADO) $(TCL_FILE)
 
-.PHONY: clean
+$(PRJ).sdk/app/Debug/app.elf:
+	xsct sw.tcl $(BOARD) $(PRJ)
+
+run:
+	xsct run.tcl $(BOARD) $(PRJ)
 
 
-all: create_synth_project exportSDK launch_xsdk_gui 
-project: create_project launch_vivado_gui
+clean:clean-all
 
-build.tcl:
-	cp -r ../../common/TCL_nodpr_v1/* .
-
-create_project: build.tcl create.tcl
-	vivado -mode batch -source $^ -tclargs $(VERSION) "nosynth"
-
-create_synth_project: build.tcl create.tcl
-	vivado -mode batch -source $^ -tclargs $(VERSION) "synth"
-
-exportSDK: sdk.tcl
-	$(RM) -rf sdk
-	vivado -mode batch -source TCL/sdk_export.tcl -tclargs $(VERSION)
-	xsdk -batch -source $^
-
-launch_vivado_gui:
-	vivado tmp/tmp.xpr
-
-launch_xsdk_gui:
-	xsdk -workspace tmp/sdk
-
-clean:
-	$(RM) -rf *~ $(PRJ) vivado* *.html *.xml
-	$(RM) -rf *.log *.jou tmp build.tcl TCL sdk
-
+clean-all:
+	rm -rf $(TMP_FILES) $(PRJ_FILES)
