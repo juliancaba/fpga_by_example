@@ -1,5 +1,5 @@
 FPGA-based examples for Xilinx devices
-=====
+===
 
 You must clone the _xilinx-tcl_ repo from juliancaba account of GitHub to automatically synthesize each project, you can also do it by hand.
 
