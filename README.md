@@ -9,9 +9,10 @@ You must clone the _xilinx-tcl_ repo from juliancaba account of GitHub to automa
 Zedboard
 =======
  * helloWorld: Hello World (only vhdl sources)
+ * dma: Transfer data from memory (addr1) to an FIFO and from the FIFO to the memory (addr2). Then it checks the transferred data
  * DPR: Example of Dynamic Partial Reconfiguration (led shift: right or left)
  
 
 ZCU104
 =======
- * blink_intr: Interrupts project with the leds and a button
+ * blink_intr: LED shifter that is interrupted when the top left button is pressed (all LEDs blinks)

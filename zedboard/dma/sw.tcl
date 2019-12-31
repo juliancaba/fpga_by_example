@@ -8,12 +8,9 @@ set workspace [pwd]/$prj.sdk
 project::setWorkspace $workspace
 project::setProjectName $prj
 
-
-
-sdk::create_sw_project standalone {}
-sdk::add_files_from_folder src/sw/
+sdk::create_sw_project standalone {"main.c"}
 
 sdk::build
-sdk::patch_psu_init
+sdk::patch_ps7_init
 
 exit

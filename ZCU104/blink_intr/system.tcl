@@ -1,6 +1,6 @@
 source /opt/xilinx-tcl/build/project.tcl
 
-set prj_name blink_intr
+set prj_name [lindex $argv 0]
 set bd design_1
 
 
