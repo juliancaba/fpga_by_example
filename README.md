@@ -9,7 +9,7 @@ You must clone the _xilinx-tcl_ repo from juliancaba account of GitHub to automa
 Zedboard
 =======
  * helloWorld: Hello World (only vhdl sources)
- * dma: Transfer data from memory (addr1) to an FIFO and from the FIFO to the memory (addr2). Then it checks the transferred data
+ * dma: Transfer data from memory (_addr1_) to an FIFO and from the FIFO to the memory (_addr2_). Then it checks the transferred data
  * DPR: Example of Dynamic Partial Reconfiguration (led shift: right or left)
  
 
