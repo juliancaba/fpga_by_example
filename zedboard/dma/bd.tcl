@@ -4,7 +4,7 @@ bd::create_bd $bd
 # PS7
 set ps [ps7::create_ip ps_0 [list hp0 1]]
 
-set dma [axi_dma::create_ip dma_0 [list sg {0 0} data_width {32} data_twidth {32} burst_size {16}]]
+set dma [axi_dma::create_ip dma_0 [list sg {0 0} data_width {32} tdata_width {32} burst_size {16}]]
 set fifo_1 [axis_data_fifo::create_ip fifo_0 [list depth 512]]
 
 # Creates the axi interconnect instance and connects the buses
